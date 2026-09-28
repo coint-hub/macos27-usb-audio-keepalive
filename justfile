@@ -14,3 +14,7 @@ install: build
     plutil -lint {{plist}}
     launchctl bootout gui/$(id -u)/{{label}} 2>/dev/null || true
     launchctl bootstrap gui/$(id -u) {{plist}}
+
+uninstall:
+    launchctl bootout gui/$(id -u)/{{label}} 2>/dev/null || true
+    rm -f {{plist}} {{bin}} {{log}}
